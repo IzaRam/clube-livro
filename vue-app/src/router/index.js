@@ -5,6 +5,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Adicionar from "../views/Adicionar.vue";
+import Livro from "../views/Livro.vue";
 
 Vue.use(VueRouter);
 
@@ -36,6 +37,12 @@ const routes = [
     path: "/adicionar",
     name: "Adicionar",
     component: Adicionar,
+    meta: { authOnly: true }
+  },
+  {
+    path: "/livro/:id",
+    name: "Livro",
+    component: Livro,
     meta: { authOnly: true }
   }
 ];

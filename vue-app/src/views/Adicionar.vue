@@ -1,6 +1,6 @@
 <template>
   <div class="home col-5 mx-auto py-5 mt-5">
-    <h1 class="text-center">Login</h1>
+    <h1 class="text-center">Adicionar Livro</h1>
     <div class="card">
       <div class="card-body">
         <div class="form-group">
@@ -58,7 +58,7 @@ export default {
           this.$router.push({ name: "Dashboard" });
         })
         .catch(error => {
-          if (error.response.status === 401) {
+          if (error.response.status === 422) {
             this.errors = error.response.data.errors;
           }
         });
