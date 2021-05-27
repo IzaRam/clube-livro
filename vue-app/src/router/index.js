@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Dashboard from "../views/Dashboard.vue";
+import Adicionar from "../views/Adicionar.vue";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,12 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
     meta: { authOnly: true }
+  },
+  {
+    path: "/adicionar",
+    name: "Adicionar",
+    component: Adicionar,
+    meta: { authOnly: true }
   }
 ];
 
@@ -45,8 +52,6 @@ function isLoggedIn() {
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.authOnly)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (!isLoggedIn()) {
       next({
         path: "/login",
@@ -56,8 +61,6 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else if (to.matched.some(record => record.meta.guestOnly)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
     if (isLoggedIn()) {
       next({
         path: "/dashboard",
@@ -67,7 +70,7 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    next(); // make sure to always call next()!
+    next();
   }
 });
 

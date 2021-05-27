@@ -56,10 +56,11 @@ export default {
         .then(response => {
           this.$root.$emit("login", true);
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           this.$router.push({ name: "Dashboard" });
         })
         .catch(error => {
-          if (error.response.status === 422) {
+          if (error.response.status === 401) {
             this.errors = error.response.data.errors;
           }
         });

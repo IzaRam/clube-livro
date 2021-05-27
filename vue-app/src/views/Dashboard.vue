@@ -1,29 +1,38 @@
 <template>
-  <div class="home col-8 mx-auto py-5 mt-5">
-    <h1>Dashboard</h1>
-    <div class="card">
-      <div class="card-body" v-if="user">
-        <h3>Hello, {{ user.name }}</h3>
-        <span>{{ user.email }}</span>
+  <div class="container">
+    <button @click.prevent="adicionar" type="button" class="btn btn-success">Adicionar</button>
+    <h1>Livros</h1>
+	<div  v-if="livros">
+    <div class="card" v-for="livro in livros" :key="livro.titulo">
+      <div class="card-body">
+        <h3>{{ livro.titulo }}</h3>
+        <span>{{ livro.autor }}</span>
       </div>
     </div>
+	</div>
   </div>
 </template>
 
 <script>
-import User from "../apis/User";
+import Livro from "../apis/Livro";
 
 export default {
   data() {
     return {
-      user: null
+      livros: null
     };
   },
 
   mounted() {
-    User.auth().then(response => {
-      this.user = response.data;
-    });
+	Livro.getLivros().then(response => {
+		this.livros = response.data;
+	});
+  },
+
+  methods: {
+    adicionar() {
+       this.$router.push({ name: "Adicionar" });
+    }
   }
 };
 </script>

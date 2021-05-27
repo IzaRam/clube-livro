@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="container">
       <div class="navbar-header">
-        <router-link class="navbar-brand" to="/">Laravel Sanctum</router-link>
+        <router-link class="navbar-brand" to="/">Clube do Livro</router-link>
       </div>
       <ul class="nav navbar-nav">
         <router-link
@@ -60,6 +60,7 @@ export default {
     logout() {
       User.logout().then(() => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         this.isLoggedIn = false;
         this.$router.push({ name: "Home" });
       });
