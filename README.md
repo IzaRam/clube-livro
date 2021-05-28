@@ -9,7 +9,7 @@ A api possuí autenticação baseada em tokens de acesso. O aplicativo recebe um
 Laravel Sanctum fornece um sistema de autenticação leve para SPAs (aplicativos de página única), aplicativos móveis e APIs simples baseadas em tokens. O Sanctum permite que cada usuário de seu aplicativo gere vários tokens de API para sua conta. Esses tokens podem receber habilidades / escopos que especificam quais ações os tokens podem realizar.
 
 
-### End-points da API
+### Endpoints da API
 
 Rotas Públicas:
 
