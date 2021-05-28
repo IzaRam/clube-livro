@@ -35,15 +35,22 @@ Route::get('livros/search/{titulo}', [LivroController::class, 'search']);
 
 // Livros - Users
 Route::get('/users/livros', [LivroUserController::class, 'index']);
-Route::get('/livros/user/{id}', [LivroUserController::class, 'show']);
+Route::get('/users/livros/{id}', [LivroUserController::class, 'show']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+	// Auth Routes
 	Route::post('/logout', [AuthController::class, 'logout']);
+
+	// Livros 
 	Route::post('/livros', [LivroController::class, 'store']);
-	Route::post('/livros/user', [LivroUserController::class, 'store']);
 	Route::put('/livros/{id}', [LivroController::class, 'update']);
 	Route::delete('/livros/{id}', [LivroController::class, 'destroy']);
-	Route::delete('/user/livro', [LivroUserController::class, 'destroy']);
+
+	// Livros - Users
+	Route::post('/users/livros', [LivroUserController::class, 'store']);
+	Route::put('/users/livros/{id}', [LivroUserController::class, 'update']);
+	Route::delete('/users/livros', [LivroUserController::class, 'destroy']);
 });
 

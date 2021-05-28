@@ -15,7 +15,7 @@ class CreateLivrosTable extends Migration
     {
         Schema::create('livros', function (Blueprint $table) {
             $table->id();
-			$table->string('titulo');       
+			$table->string('titulo')->unique();    
             $table->string('autor');        
             $table->string('descricao')->nullable();
             $table->string('imagem')->nullable();	

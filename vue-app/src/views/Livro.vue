@@ -1,11 +1,15 @@
 <template>
-  <div class="container">
-	<div class="card" v-if="livro">
+  <div class="container" style="margin-top: 20pt;">
+	<div class="card mx-auto" v-if="livro" style="width: 400pt; margin-bottom: 20pt">
       <div class="card-body">
-        <h3>{{ livro.titulo }}</h3>
+        <h3 class="card-title">{{ livro.titulo }}</h3>
         <span>{{ livro.autor }}</span>
 		<br>
-     	<button @click.prevent="adicionar" type="button" class="btn btn-primary">Adicionar a Coleção</button>
+	    <img v-if="livro.imagem" :src="livro.imagem" class="card-img-center">
+		<br>
+		<p class="card-text">{{ livro.descricao }}</p>
+		<br>
+     	<button @click.prevent="adicionar" type="button" class="btn btn-primary" style="margin-right: 5pt">Adicionar a Coleção</button>
 	    <button @click.prevent="reservar" type="button" class="btn btn-success">Reservar</button>
       </div>
 	</div>
@@ -21,6 +25,7 @@ import UserLivro from "../apis/UserLivro";
 export default {
   data() {
     return {
+	  id:  "" +  this.$route.params.id,
       livro: null,
 	  form: {
 		user_id: JSON.parse(localStorage.getItem("user")).id,
@@ -33,9 +38,6 @@ export default {
 	const id = "" +  this.$route.params.id;
 	Livro.getLivro(id).then(response => {
 		this.livro = response.data;
-	});
-	UserLivro.getUsersLivro(id).then(response => {
-		console.log(response);
 	});
   },
 
@@ -54,11 +56,13 @@ export default {
     },
 	
 	reservar() {
-      UserLivro.reservar(this.form)
+      UserLivro.reservar(this.id)
         .then(response => {
 			console.log(response);
+			alert("Livro reservado com sucesso!");
         })
         .catch(error => {
+		  alert("Nenhum exemplar disponível para reservas!")
           if (error.response.status === 401) {
             this.errors = error.response.data.errors;
           }

@@ -2,14 +2,10 @@ import Api from "./Api";
 
 export default {
   adicionar(form) {
-    return Api().post("/livros/user", form);
+    return Api().post("/users/livros", form);
   },
 
-  reservar(form) {
-    return Api().post("/", form);
-  },
-
-  getUsersLivro(id) {
-    return Api().get("/livros/user/" + id);
+  reservar(id) {
+    return Api().put("/users/livros/" + id);
   }
 };

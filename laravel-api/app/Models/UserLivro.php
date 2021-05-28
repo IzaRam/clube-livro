@@ -10,7 +10,8 @@ class UserLivro extends Model
     use HasFactory;
 	protected $fillable = [
         'user_id',
-        'livro_id'
+		'livro_id',
+		'reservado'
     ];
 
 }

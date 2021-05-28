@@ -51,9 +51,21 @@ class LivroUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($livro_id)
     {
-        //
+        $user_livro =  UserLivro::where('livro_id', $livro_id)->where('reservado', false)->first();
+
+		if (!$user_livro) {
+			return response([
+				"message" => "Nenhum livro disponível encontrado!"
+			], 404);
+		}
+
+		$user_livro->reservado = true;
+		$user_livro->save();
+
+		return $user_livro;
+
     }
 
     /**

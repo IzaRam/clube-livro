@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
+  <div class="container" style="margin-top: 20pt">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <button @click.prevent="adicionar" type="button" class="btn btn-success">Adicionar</button>
+	</div>
     <h1>Livros</h1>
 	<div  v-if="livros">
-    <div class="card" v-for="(livro, i) in livros" :key="livro.titulo" v-on:click="select(i)" style="cursor:pointer">
+    <div class="card" v-for="(livro, i) in livros" :key="livro.titulo" v-on:click="select(i)" style="cursor:pointer; margin-bottom: 10pt">
       <div class="card-body">
         <h3>{{ livro.titulo }}</h3>
         <span>{{ livro.autor }}</span>
