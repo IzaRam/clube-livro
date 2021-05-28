@@ -13,41 +13,53 @@ Laravel Sanctum fornece um sistema de autenticação leve para SPAs (aplicativos
 
 Rotas Públicas:
 
-// Auth Routes                 
-
+* Auth Routes                 
+```
 POST /api/register
 POST /api/login
-        
-// Livros 
+```   
+
+* Livros 
+```
 GET /api/livros
 GET /api/livros/{id}
 GET /api/livros/search/{titulo}
+```
   
-// Livros - Users              
+* Livros - Users              
+```
 GET /api/users/livros
 GET /api/users/livros/{id}
+```
 
 
 Rotas Protegidas:
 
-// Auth Routes
+* Auth Routes
+```
 POST api/logout
+```
     
-// Livros                  
+* Livros                  
+```
 POST /api/livros
 PUT /api/livros/{id}
 DELETE /api/livros/{id}
+```
 
-// Livros - Users          
+* Livros - Users          
+```
 POST /api/users/livros
 PUT /api/users/livros/{id}
 DELETE /api/users/livros
+```
 
 
 ### Modelos
 
 * Livro:
 
+```
 {
     "id": 1,
     "titulo": "O Poder do Silêncio",
@@ -57,9 +69,11 @@ DELETE /api/users/livros
 	"created_at": "2021-05-28T12:09:16.000000Z",
 	"updated_at": "2021-05-28T12:09:16.000000Z"
 }
+```
 
 * Join table - LivroUser:
 
+```
 {
     "id": 1,
     "user_id": 1,
@@ -68,6 +82,7 @@ DELETE /api/users/livros
     "created_at": "2021-05-28T12:27:32.000000Z",
 	"updated_at": "2021-05-28T12:27:32.000000Z"
 }
+```
 
 
 ## Front-end
