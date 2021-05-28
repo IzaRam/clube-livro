@@ -66,8 +66,8 @@ DELETE /api/users/livros
     "autor": "Eckhart Tolle",
     "descricao": "New York Times bestselling author Eckhart Tolle",
     "imagem": "https://images-na.ssl-images-amazon.com/images/I/51VBUzYc4VL.jpg",
-	"created_at": "2021-05-28T12:09:16.000000Z",
-	"updated_at": "2021-05-28T12:09:16.000000Z"
+    "created_at": "2021-05-28T12:09:16.000000Z",
+    "updated_at": "2021-05-28T12:09:16.000000Z"
 }
 ```
 
@@ -80,7 +80,7 @@ DELETE /api/users/livros
     "livro_id": 1,
     "reservado": 0,
     "created_at": "2021-05-28T12:27:32.000000Z",
-	"updated_at": "2021-05-28T12:27:32.000000Z"
+    "updated_at": "2021-05-28T12:27:32.000000Z"
 }
 ```
 
